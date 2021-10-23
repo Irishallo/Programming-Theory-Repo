@@ -198,3 +198,67 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 627.189458 seconds.
+  path: Assets/Scenes/SampleScene.unity
+  artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/SampleScene.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 26.061912 seconds  code(4) message(Build asset version error: assets/scenes/samplescene.unity in SourceAssetDB has modification time of '2021-10-21T11:20:43.6755738Z' while content on disk has modification time of '0001-01-01T00:00:00Z' with error code 2
+Stacktrace:
+0x00007ff650c378dc (Unity) StackWalker::GetCurrentCallstack
+0x00007ff650c3ff79 (Unity) StackWalker::ShowCallstack
+0x00007ff652163ddc (Unity) GetStacktrace
+0x00007ff6523470f7 (Unity) GetAssetHashAndValidate
+0x00007ff6523422c3 (Unity) AssetVersionBuilder::BuildHashOfSourceAssetArray
+0x00007ff652340232 (Unity) AssetVersionBuilder::BuildAssetVersion
+0x00007ff65231a64d (Unity) CreateAssetVersionBuilder
+0x00007ff65232134d (Unity) ImportToObjects
+0x00007ff652320168 (Unity) ImportAsset
+0x00007ff652281f68 (Unity) AssetImportWorker::Import
+0x00007ff6522d52fa (Unity) <lambda_7448d646502792db0127dc89657ec83e>::operator()
+0x00007ff6523795f2 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff65237b750 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff65237eede (Unity) asio::io_service::run
+0x00007ff6523020bb (Unity) RunAssetImportWorkerClientV2
+0x00007ff652302110 (Unity) RunAssetImporterV2
+0x00007ff6517c55b6 (Unity) Application::InitializeProject
+0x00007ff652171342 (Unity) WinMain
+0x00007ff653fc69b6 (Unity) __scrt_common_main_seh
+0x00007ff82d127034 (KERNEL32) BaseThreadInitThunk
+0x00007ff82e902651 (ntdll) RtlUserThreadStart
+)
+  ERROR: Build asset version error: assets/scenes/samplescene.unity in SourceAssetDB has modification time of '2021-10-21T11:20:43.6755738Z' while content on disk has modification time of '0001-01-01T00:00:00Z' with error code 2
+Stacktrace:
+0x00007ff650c378dc (Unity) StackWalker::GetCurrentCallstack
+0x00007ff650c3ff79 (Unity) StackWalker::ShowCallstack
+0x00007ff652163ddc (Unity) GetStacktrace
+0x00007ff6523470f7 (Unity) GetAssetHashAndValidate
+0x00007ff6523422c3 (Unity) AssetVersionBuilder::BuildHashOfSourceAssetArray
+0x00007ff652340232 (Unity) AssetVersionBuilder::BuildAssetVersion
+0x00007ff65231a64d (Unity) CreateAssetVersionBuilder
+0x00007ff65232134d (Unity) ImportToObjects
+0x00007ff652320168 (Unity) ImportAsset
+0x00007ff652281f68 (Unity) AssetImportWorker::Import
+0x00007ff6522d52fa (Unity) <lambda_7448d646502792db0127dc89657ec83e>::operator()
+0x00007ff6523795f2 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff65237b750 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff65237eede (Unity) asio::io_service::run
+0x00007ff6523020bb (Unity) RunAssetImportWorkerClientV2
+0x00007ff652302110 (Unity) RunAssetImporterV2
+0x00007ff6517c55b6 (Unity) Application::InitializeProject
+0x00007ff652171342 (Unity) WinMain
+0x00007ff653fc69b6 (Unity) __scrt_common_main_seh
+0x00007ff82d127034 (KERNEL32) BaseThreadInitThunk
+0x00007ff82e902651 (ntdll) RtlUserThreadStart
+
+  Import took 26.065456 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000472 seconds.
+  path: Assets/Scenes/Game.unity
+  artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Game.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '788ec6182ad18830fb46aee9378c5dda') in 0.003325 seconds 
+  Import took 0.035436 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
