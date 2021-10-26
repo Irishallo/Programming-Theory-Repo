@@ -4,35 +4,54 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    //private float xPos = 115.0f;
-    private float speed = 10;
+    public float xPos = 115.0f;
+    public float xBounds = 130.0f;
+    //public float speed = 10;
+    public bool movingLeft = false;
+    public bool movingRight = false;
+    public bool shootingOk = false;
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
-        MoveEnemyLeft();
-    }
-
-    private void MoveEnemyRight()
-    {
-        if (transform.position.x > 120)
-        {
-            transform.Translate(Vector3.right * Time.deltaTime * speed);
-        }
         
     }
 
-    private void MoveEnemyLeft()
+    public virtual void MoveEnemyRight(float speed)
     {
-        if (transform.position.x < -120)
+        transform.Translate(Vector3.right * Time.deltaTime * speed);        
+    }
+
+    public virtual void MoveEnemyLeft(float speed)
+    {
+        transform.Translate(Vector3.left * Time.deltaTime * speed);
+    }
+
+    public virtual void RemoveEnemy()
+    {
+        movingLeft = false;
+        movingRight = false;
+        Destroy(gameObject);
+    }
+
+    public virtual void ShootItem(GameObject item, float shootSpeed)
+    {
+        if (shootingOk)
         {
-            transform.Translate(Vector3.left * Time.deltaTime * speed);
+            shootingOk = false;
+            Instantiate(item, transform.position, item.transform.rotation);
+            Invoke("ShootTimer", shootSpeed);
         }
+    }
+
+    public virtual void ShootTimer()
+    {
+        shootingOk = true;
     }
 }
