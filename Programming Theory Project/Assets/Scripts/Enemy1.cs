@@ -5,6 +5,8 @@ using UnityEngine;
 public class Enemy1 : EnemyController
 {
     private float enemy1Speed = 15;
+    private float shootSpeed1 = 1;
+    [SerializeField] GameObject item1;
 
     // Start is called before the first frame update
     public override void Start()
@@ -16,12 +18,15 @@ public class Enemy1 : EnemyController
         {
             movingRight = true;
         }
-        
+
+        shootingOk = true;
     }
 
     // Update is called once per frame
     public override void Update()
     {
+        ShootItem(item1, shootSpeed1);
+
         if(movingLeft)
         {
             MoveEnemyLeft(enemy1Speed);
