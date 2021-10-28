@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8069339363480377044}
   - component: {fileID: 8036523354065738496}
   - component: {fileID: 8043642103316644134}
+  - component: {fileID: 764250239307404575}
   m_Layer: 0
   m_Name: HealthUp2
   m_TagString: Untagged
@@ -81,3 +82,15 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &764250239307404575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8067348570278523802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b0de08d16a3e64fbc70c64560ec712, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

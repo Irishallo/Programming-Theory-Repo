@@ -22,4 +22,12 @@ public class EnemyItem2 : ItemsController
             DestroyOutOfBounds();
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }
