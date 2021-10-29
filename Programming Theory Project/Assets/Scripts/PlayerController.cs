@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,8 +9,24 @@ public class PlayerController : MonoBehaviour
     private float verticalInput;
     private float xRange = 110.0f;
     private float zRange = 35.0f;
+    private int m_Health = 20;
+    public int health
+    {
+        get { return m_Health; }
+        set { if (value < 0)
+                {
+                   m_Health = 0;
+                } else if (value > 20)
+                {
+                   m_Health = 20;
+                } else
+                {
+                   m_Health = value;
+                }
+             }
+    }
     [SerializeField] float speed;
-    [SerializeField] int health;
+    [SerializeField] TextMeshProUGUI healthText;
 
     // Start is called before the first frame update
     void Start()
@@ -21,9 +38,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         MovePlayer();
+        HealthUpdate();
     }
 
-    public void MovePlayer()
+    private void MovePlayer()
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
@@ -52,5 +70,10 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, zRange);
         }
+    }
+
+    private void HealthUpdate()
+    {
+        healthText.text = "Health: " + health;
     }
 }

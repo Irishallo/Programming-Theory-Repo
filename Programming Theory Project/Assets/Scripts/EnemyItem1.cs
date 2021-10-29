@@ -27,6 +27,7 @@ public class EnemyItem1 : ItemsController
     {
         if(other.CompareTag("Player"))
         {
+            
             Destroy(gameObject);
         }
     }
