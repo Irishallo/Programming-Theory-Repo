@@ -5,11 +5,13 @@ using UnityEngine;
 public class EnemyItem1 : ItemsController
 {
     private float speed1 = 40.0f;
+    private int damage1 = 3;
+    private PlayerController playerController;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -27,7 +29,7 @@ public class EnemyItem1 : ItemsController
     {
         if(other.CompareTag("Player"))
         {
-            
+            playerController.SubstractHealth(damage1);
             Destroy(gameObject);
         }
     }
