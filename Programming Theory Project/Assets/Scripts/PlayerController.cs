@@ -76,4 +76,14 @@ public class PlayerController : MonoBehaviour
     {
         healthText.text = "Health: " + health;
     }
+
+    public void SubstractHealth(int healthSubstracter)
+    {
+        m_Health -= healthSubstracter;
+    }
+
+    public void AddHealth(int healthAdder)
+    {
+        m_Health -= healthAdder;
+    }
 }
