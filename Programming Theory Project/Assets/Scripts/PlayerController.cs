@@ -15,13 +15,16 @@ public class PlayerController : MonoBehaviour
         get { return m_Health; }
         set { if (value < 0)
                 {
-                   m_Health = 0;
+                    m_Health = 0;
+                    Debug.Log("value below 0");
                 } else if (value > 20)
                 {
-                   m_Health = 20;
+                    m_Health = 20;
+                    Debug.Log("value above 20");
                 } else
                 {
-                   m_Health = value;
+                    m_Health = value;
+                    Debug.Log("value correct!");
                 }
              }
     }
@@ -79,11 +82,11 @@ public class PlayerController : MonoBehaviour
 
     public void SubstractHealth(int healthSubstracter)
     {
-        m_Health -= healthSubstracter;
+        health -= healthSubstracter;
     }
 
     public void AddHealth(int healthAdder)
     {
-        m_Health -= healthAdder;
+        health += healthAdder;
     }
 }
