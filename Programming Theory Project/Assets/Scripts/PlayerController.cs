@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class PlayerController : MonoBehaviour
@@ -9,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private float verticalInput;
     private float xRange = 110.0f;
     private float zRange = 35.0f;
+    private int maxHealth = 20;
     private int m_Health = 20;
     public int health
     {
@@ -16,20 +18,18 @@ public class PlayerController : MonoBehaviour
         set { if (value < 0)
                 {
                     m_Health = 0;
-                    Debug.Log("value below 0");
                 } else if (value > 20)
                 {
                     m_Health = 20;
-                    Debug.Log("value above 20");
                 } else
                 {
                     m_Health = value;
-                    Debug.Log("value correct!");
                 }
              }
     }
     [SerializeField] float speed;
     [SerializeField] TextMeshProUGUI healthText;
+    [SerializeField] Image healthBarImage;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +41,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         MovePlayer();
-        HealthUpdate();
     }
 
     private void MovePlayer()
@@ -78,15 +77,19 @@ public class PlayerController : MonoBehaviour
     private void HealthUpdate()
     {
         healthText.text = "Health: " + health;
+        Debug.Log(Mathf.Clamp(health / maxHealth, 0, 1f));
+        healthBarImage.fillAmount = Mathf.Clamp(health / maxHealth, 0, 1f);
     }
 
     public void SubstractHealth(int healthSubstracter)
     {
         health -= healthSubstracter;
+        HealthUpdate();
     }
 
     public void AddHealth(int healthAdder)
     {
         health += healthAdder;
+        HealthUpdate();
     }
 }
