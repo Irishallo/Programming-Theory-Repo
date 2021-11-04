@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField] GameObject[] enemyPrefabs;
     [SerializeField] GameObject[] goodItemPrefabs;
+    [SerializeField] GameObject gameOverScreen;
     private float xSpawn = 115.0f;
     private float zSpawn1 = -55.0f;
     private float zSpawn2 = -90.0f;
@@ -50,5 +53,10 @@ public class SpawnManager : MonoBehaviour
         int goodItemIndex = Random.Range(0, goodItemPrefabs.Length);
         Vector3 spawnPosGood = new Vector3(Random.Range(-xSpawn, xSpawn), 0, Random.Range(zSpawn4, zSpawn3));
         Instantiate(goodItemPrefabs[goodItemIndex], spawnPosGood, goodItemPrefabs[goodItemIndex].transform.rotation);
+    }
+
+    public void GameOver()
+    {
+        gameOverScreen.gameObject.SetActive(true);
     }
 }

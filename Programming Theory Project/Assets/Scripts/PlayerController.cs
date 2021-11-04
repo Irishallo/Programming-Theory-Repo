@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private float zRange = 35.0f;
     private float maxHealth = 20;
     private float m_Health = 20;
+    private SpawnManager spawnManager;
     public float health
     {
         get { return m_Health; }
@@ -33,7 +34,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
     }
 
     // Update is called once per frame
@@ -82,6 +83,10 @@ public class PlayerController : MonoBehaviour
     {
         health -= healthSubstracter;
         HealthUpdate();
+        if(health < 1)
+        {
+            spawnManager.GameOver();
+        }
     }
 
     public void AddHealth(float healthAdder)
