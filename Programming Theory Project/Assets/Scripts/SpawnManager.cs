@@ -10,6 +10,7 @@ public class SpawnManager : MonoBehaviour
     private float zSpawn1 = -55.0f;
     private float zSpawn2 = -90.0f;
     private float zSpawn3 = 45.0f;
+    private float zSpawn4 = -45.0f;
     private float startDelayEnemy = 2;
     private float enemySpawnInterval = 1.5f;
     private float startDelayGood = 7;
@@ -47,7 +48,7 @@ public class SpawnManager : MonoBehaviour
     private void SpawnGoodItems()
     {
         int goodItemIndex = Random.Range(0, goodItemPrefabs.Length);
-        Vector3 spawnPosGood = new Vector3(Random.Range(-xSpawn, xSpawn), 0, Random.Range(zSpawn1, zSpawn3));
+        Vector3 spawnPosGood = new Vector3(Random.Range(-xSpawn, xSpawn), 0, Random.Range(zSpawn4, zSpawn3));
         Instantiate(goodItemPrefabs[goodItemIndex], spawnPosGood, goodItemPrefabs[goodItemIndex].transform.rotation);
     }
 }

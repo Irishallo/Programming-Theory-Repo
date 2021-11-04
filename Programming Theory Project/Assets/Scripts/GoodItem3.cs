@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GoodItem3 : ItemsController
 {
-    private int healthBonus2 = 7;
+    private float healthBonus2 = 7;
     private PlayerController playerController;
 
     // Start is called before the first frame update

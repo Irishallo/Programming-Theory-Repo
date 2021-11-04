@@ -10,9 +10,9 @@ public class PlayerController : MonoBehaviour
     private float verticalInput;
     private float xRange = 110.0f;
     private float zRange = 35.0f;
-    private int maxHealth = 20;
-    private int m_Health = 20;
-    public int health
+    private float maxHealth = 20;
+    private float m_Health = 20;
+    public float health
     {
         get { return m_Health; }
         set { if (value < 0)
@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour
              }
     }
     [SerializeField] float speed;
-    [SerializeField] TextMeshProUGUI healthText;
     [SerializeField] Image healthBarImage;
 
     // Start is called before the first frame update
@@ -76,18 +75,16 @@ public class PlayerController : MonoBehaviour
 
     private void HealthUpdate()
     {
-        healthText.text = "Health: " + health;
-        Debug.Log(Mathf.Clamp(health / maxHealth, 0, 1f));
         healthBarImage.fillAmount = Mathf.Clamp(health / maxHealth, 0, 1f);
     }
 
-    public void SubstractHealth(int healthSubstracter)
+    public void SubstractHealth(float healthSubstracter)
     {
         health -= healthSubstracter;
         HealthUpdate();
     }
 
-    public void AddHealth(int healthAdder)
+    public void AddHealth(float healthAdder)
     {
         health += healthAdder;
         HealthUpdate();

@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyItem3 : ItemsController
 {
     private float speed3 = 60.0f;
-    private int damage3 = 6;
+    private float damage3 = 6;
     private PlayerController playerController;
 
     // Start is called before the first frame update
