@@ -764,7 +764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &793002452
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1289,6 +1289,8 @@ MonoBehaviour:
   - {fileID: 1005224389613415152, guid: 1a4bf1e03b90dcb47b1686ae38623bd9, type: 3}
   - {fileID: 8067348570278523802, guid: 397e26a94fda0df419122a6545669717, type: 3}
   gameOverScreen: {fileID: 1480004383}
+  titleScreen: {fileID: 793002451}
+  gameActive: 0
 --- !u!4 &1269821529
 Transform:
   m_ObjectHideFlags: 0
@@ -1385,7 +1387,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1318424222}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1269821528}
+        m_TargetAssemblyTypeName: SpawnManager, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1318424222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1814,7 +1828,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1531586573}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1269821528}
+        m_TargetAssemblyTypeName: SpawnManager, Assembly-CSharp
+        m_MethodName: RestartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1531586573
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,11 +6,14 @@ public class Enemy3 : EnemyController
 {
     private float enemy3Speed = 25;
     private float shootSpeed3 = 3;
+    private SpawnManager spawnManager;
     [SerializeField] GameObject item3;
 
     // Start is called before the first frame update
     public override void Start()
     {
+        spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+
         if (transform.position.x == xPos)
         {
             movingLeft = true;
@@ -37,7 +40,7 @@ public class Enemy3 : EnemyController
             MoveEnemyRight(enemy3Speed);
         }
 
-        if (transform.position.x < -xBounds || transform.position.x > xBounds)
+        if (transform.position.x < -xBounds || transform.position.x > xBounds || !spawnManager.gameActive)
         {
             RemoveEnemy();
         }
