@@ -5,6 +5,7 @@ using UnityEngine;
 public class GoodItem1 : MonoBehaviour
 {
     
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +18,4 @@ public class GoodItem1 : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-        }
-    }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy1 : EnemyController
 {
     private float enemy1Speed = 15;
-    private float shootSpeed1 = 1;
+    private float shootSpeed1 = 3;
     private SpawnManager spawnManager;
     [SerializeField] GameObject item1;
 

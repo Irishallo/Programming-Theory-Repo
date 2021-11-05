@@ -319,7 +319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9144046641377940492}
   - component: {fileID: 9144046641370201006}
-  - component: {fileID: -1391603874500744841}
+  - component: {fileID: 4606332205181301510}
   m_Layer: 0
   m_Name: enemy 1
   m_TagString: Untagged
@@ -373,7 +373,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-1391603874500744841
+--- !u!114 &4606332205181301510
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -382,7 +382,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9144046641377445932}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f74bc9352cc5615448cdcdf73cb52f2b, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d8388952177af74681b8edf3945a38f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   xPos: 115
@@ -390,7 +390,7 @@ MonoBehaviour:
   movingLeft: 0
   movingRight: 0
   shootingOk: 0
-  item1: {fileID: 4428349712324277796, guid: 9c806906d5a67f44486245bbce71a8a7, type: 3}
+  item3: {fileID: 4428349712324277796, guid: 9c806906d5a67f44486245bbce71a8a7, type: 3}
 --- !u!1 &9144046641377446000
 GameObject:
   m_ObjectHideFlags: 0

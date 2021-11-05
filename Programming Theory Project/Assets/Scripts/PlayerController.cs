@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
                 }
              }
     }
+
+    public bool powerActive = false;
     [SerializeField] float speed;
     [SerializeField] Image healthBarImage;
 
@@ -96,5 +98,14 @@ public class PlayerController : MonoBehaviour
     {
         health += healthAdder;
         HealthUpdate();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Powerup"))
+        {
+            powerActive = true;
+            Destroy(other.gameObject);
+        }
     }
 }
