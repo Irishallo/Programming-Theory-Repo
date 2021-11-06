@@ -32,17 +32,23 @@ public class PlayerController : MonoBehaviour
     public bool powerActive = false;
     [SerializeField] float speed;
     [SerializeField] Image healthBarImage;
+    [SerializeField] GameObject powerupIndicator;
 
     // Start is called before the first frame update
     void Start()
     {
         spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+        powerupIndicator.transform.position = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
         MovePlayer();
+        if(powerActive)
+        {
+            powerupIndicator.transform.Rotate(0, 5f, 0);
+        }
     }
 
     private void MovePlayer()
@@ -52,9 +58,17 @@ public class PlayerController : MonoBehaviour
             horizontalInput = Input.GetAxis("Horizontal");
             verticalInput = Input.GetAxis("Vertical");
 
-            transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
-            transform.Translate(Vector3.forward * verticalInput * Time.deltaTime * speed);
+            if(powerActive)
+            {
+                transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed * 1.5f);
+                transform.Translate(Vector3.forward * verticalInput * Time.deltaTime * speed * 1.5f);
+            } else
+            {
+                transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
+                transform.Translate(Vector3.forward * verticalInput * Time.deltaTime * speed);
+            }
 
+            
             // Check for left and right bounds
             if (transform.position.x < -xRange)
             {
@@ -76,6 +90,8 @@ public class PlayerController : MonoBehaviour
             {
                 transform.position = new Vector3(transform.position.x, transform.position.y, zRange);
             }
+
+            powerupIndicator.transform.position = transform.position;
         }
     }
 
@@ -86,7 +102,14 @@ public class PlayerController : MonoBehaviour
 
     public void SubstractHealth(float healthSubstracter)
     {
-        health -= healthSubstracter;
+        if(powerActive)
+        {
+            health -= (healthSubstracter / 2);
+        } else
+        {
+            health -= healthSubstracter;
+        }
+        
         HealthUpdate();
         if(health < 1)
         {
@@ -96,7 +119,13 @@ public class PlayerController : MonoBehaviour
 
     public void AddHealth(float healthAdder)
     {
-        health += healthAdder;
+        if(powerActive)
+        {
+            health += healthAdder * 2;
+        } else
+        {
+            health += healthAdder;
+        }
         HealthUpdate();
     }
 
@@ -105,7 +134,16 @@ public class PlayerController : MonoBehaviour
         if(other.CompareTag("Powerup"))
         {
             powerActive = true;
+            powerupIndicator.gameObject.SetActive(true);
             Destroy(other.gameObject);
+            StartCoroutine(PowerupCountDownRoutine());
         }
+    }
+
+    IEnumerator PowerupCountDownRoutine()
+    {
+        yield return new WaitForSeconds(5);
+        powerActive = false;
+        powerupIndicator.gameObject.SetActive(false);
     }
 }
