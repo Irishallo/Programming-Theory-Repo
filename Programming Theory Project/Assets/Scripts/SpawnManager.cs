@@ -7,19 +7,19 @@ using UnityEngine.SceneManagement;
 
 public class SpawnManager : MonoBehaviour
 {
-    [SerializeField] GameObject[] enemyPrefabs;
-    [SerializeField] GameObject[] goodItemPrefabs;
-    [SerializeField] GameObject gameOverScreen;
-    [SerializeField] GameObject titleScreen;
-    private float xSpawn = 115.0f;
-    private float zSpawn1 = -55.0f;
-    private float zSpawn2 = -90.0f;
-    private float zSpawn3 = 45.0f;
-    private float zSpawn4 = -45.0f;
-    private float startDelayEnemy = 2;
-    private float enemySpawnInterval = 1.5f;
-    private float startDelayGood = 7;
-    private float goodSpawnInterval = 5f;
+    [SerializeField] GameObject[] enemyPrefabs; //ENCAPSULATION
+    [SerializeField] GameObject[] goodItemPrefabs; //ENCAPSULATION
+    [SerializeField] GameObject gameOverScreen; //ENCAPSULATION
+    [SerializeField] GameObject titleScreen; //ENCAPSULATION
+    private float xSpawn = 115.0f; //ENCAPSULATION
+    private float zSpawn1 = -55.0f; //ENCAPSULATION
+    private float zSpawn2 = -90.0f; //ENCAPSULATION
+    private float zSpawn3 = 45.0f; //ENCAPSULATION
+    private float zSpawn4 = -45.0f; //ENCAPSULATION
+    private float startDelayEnemy = 2; //ENCAPSULATION
+    private float enemySpawnInterval = 1.5f; //ENCAPSULATION
+    private float startDelayGood = 7; //ENCAPSULATION
+    private float goodSpawnInterval = 5f; //ENCAPSULATION
     public bool gameActive = false;
 
     // Start is called before the first frame update
@@ -34,7 +34,7 @@ public class SpawnManager : MonoBehaviour
         
     }
 
-    private void SpawnEnemy()
+    private void SpawnEnemy() //ABSTRACTION
     {
         if(gameActive)
         {
@@ -53,7 +53,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    private void SpawnGoodItems()
+    private void SpawnGoodItems() //ABSTRACTION
     {
         if(gameActive)
         {
@@ -63,13 +63,13 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    public void GameOver()
+    public void GameOver() //ABSTRACTION
     {
         gameOverScreen.gameObject.SetActive(true);
         gameActive = false;
     }
 
-    public void StartGame()
+    public void StartGame() //ABSTRACTION
     {
         gameActive = true;
         titleScreen.gameObject.SetActive(false);
@@ -77,7 +77,7 @@ public class SpawnManager : MonoBehaviour
         InvokeRepeating("SpawnGoodItems", startDelayGood, goodSpawnInterval);
     }
 
-    public void RestartGame()
+    public void RestartGame() //ABSTRACTION
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

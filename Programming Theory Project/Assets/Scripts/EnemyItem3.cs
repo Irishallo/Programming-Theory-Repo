@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyItem3 : ItemsController
+public class EnemyItem3 : ItemsController //INHERITANCE
 {
-    private float speed3 = 60.0f;
-    private float damage3 = 3;
-    private PlayerController playerController;
+    private float speed3 = 60.0f; //ENCAPSULATION
+    private float damage3 = 3; //ENCAPSULATION
+    private PlayerController playerController; //ENCAPSULATION
 
     // Start is called before the first frame update
     void Start()
@@ -15,7 +15,7 @@ public class EnemyItem3 : ItemsController
     }
 
     // Update is called once per frame
-    public override void Update()
+    public override void Update() //POLYMORPHISM
     {
         MoveForward(speed3);
 

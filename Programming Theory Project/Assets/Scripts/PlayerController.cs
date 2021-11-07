@@ -6,14 +6,15 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-    private float horizontalInput;
-    private float verticalInput;
-    private float xRange = 110.0f;
-    private float zRange = 35.0f;
-    private float maxHealth = 20;
-    private float m_Health = 20;
-    private SpawnManager spawnManager;
-    public float health
+    private SpawnManager spawnManager; //ENCAPSULATION
+    private float horizontalInput; //ENCAPSULATION
+    private float verticalInput; //ENCAPSULATION
+    private float xRange = 110.0f; //ENCAPSULATION
+    private float zRange = 35.0f; //ENCAPSULATION
+    private int m_Score = 0; //ENCAPSULATION
+    private float maxHealth = 20; //ENCAPSULATION
+    private float m_Health = 20; //ENCAPSULATION
+    public float health //ENCAPSULATION
     {
         get { return m_Health; }
         set { if (value < 0)
@@ -29,16 +30,34 @@ public class PlayerController : MonoBehaviour
              }
     }
 
+    public int score //ENCAPSULATION
+    {
+        get { return m_Score; }
+        set
+        {
+            if (value < 0)
+            {
+                m_Score = 0;
+            }
+            else
+            {
+                m_Score = value;
+            }
+        }
+    }
+
     public bool powerActive = false;
-    [SerializeField] float speed;
-    [SerializeField] Image healthBarImage;
-    [SerializeField] GameObject powerupIndicator;
+    [SerializeField] float speed; //ENCAPSULATION
+    [SerializeField] Image healthBarImage; //ENCAPSULATION
+    [SerializeField] GameObject powerupIndicator; //ENCAPSULATION
+    [SerializeField]  TextMeshProUGUI scoreText; //ENCAPSULATION
 
     // Start is called before the first frame update
     void Start()
     {
         spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
         powerupIndicator.transform.position = transform.position;
+        scoreText.text = "Score: " + score;
     }
 
     // Update is called once per frame
@@ -51,7 +70,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void MovePlayer()
+    private void MovePlayer() //ABSTRACTION
     {
         if(spawnManager.gameActive)
         {
@@ -95,12 +114,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void HealthUpdate()
+    private void HealthUpdate() //ABSTRACTION
     {
         healthBarImage.fillAmount = Mathf.Clamp(health / maxHealth, 0, 1f);
     }
 
-    public void SubstractHealth(float healthSubstracter)
+    public void SubstractHealth(float healthSubstracter) //ABSTRACTION
     {
         if(powerActive)
         {
@@ -117,7 +136,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void AddHealth(float healthAdder)
+    public void AddHealth(float healthAdder) //ABSTRACTION
     {
         if(powerActive)
         {
@@ -127,6 +146,22 @@ public class PlayerController : MonoBehaviour
             health += healthAdder;
         }
         HealthUpdate();
+    }
+
+    public void ScoreUpdate() //ABSTRACTION
+    {
+        if (powerActive)
+        {
+            score += 2;
+            Debug.Log("add 2");
+        }
+        else
+        {
+            score += 1;
+            Debug.Log("add 1");
+        }
+
+        scoreText.text = "Score: " + score;
     }
 
     private void OnTriggerEnter(Collider other)

@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy3 : EnemyController
+public class Enemy3 : EnemyController //INHERITANCE
 {
-    private float enemy3Speed = 25;
-    private float shootSpeed3 = 1;
-    private SpawnManager spawnManager;
-    [SerializeField] GameObject item3;
+    private float enemy3Speed = 25; //ENCAPSULATION
+    private float shootSpeed3 = 1; //ENCAPSULATION
+    private SpawnManager spawnManager; //ENCAPSULATION
+    private PlayerController playerController; //ENCAPSULATION
+    [SerializeField] GameObject item3; //ENCAPSULATION
 
     // Start is called before the first frame update
-    public override void Start()
+    public override void Start() //POLYMORPHISM
     {
         spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
 
         if (transform.position.x == xPos)
         {
@@ -27,7 +29,7 @@ public class Enemy3 : EnemyController
     }
 
     // Update is called once per frame
-    public override void Update()
+    public override void Update() //POLYMORPHISM
     {
         ShootItem(item3, shootSpeed3);
 
@@ -40,8 +42,13 @@ public class Enemy3 : EnemyController
             MoveEnemyRight(enemy3Speed);
         }
 
-        if (transform.position.x < -xBounds || transform.position.x > xBounds || !spawnManager.gameActive)
+        if (!spawnManager.gameActive)
         {
+            RemoveEnemy();
+        }
+        else if (transform.position.x < -xBounds || transform.position.x > xBounds)
+        {
+            playerController.ScoreUpdate();
             RemoveEnemy();
         }
 

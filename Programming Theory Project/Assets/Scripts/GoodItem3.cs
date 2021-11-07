@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoodItem3 : ItemsController
+public class GoodItem3 : ItemsController //INHERITANCE
 {
-    private float healthBonus2 = 7;
+    private float healthBonus2 = 7; //ENCAPSULATION
     private PlayerController playerController;
 
     // Start is called before the first frame update
